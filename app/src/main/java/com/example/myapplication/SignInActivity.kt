@@ -28,8 +28,6 @@ class SignInActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        // This codelab uses View Binding
-        // See: https://developer.android.com/topic/libraries/view-binding
         binding = ActivitySignInBinding.inflate(layoutInflater)
         setContentView(binding.root)
         setContentView(R.layout.activity_sign_in)
