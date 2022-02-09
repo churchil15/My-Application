@@ -40,20 +40,8 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        // This codelab uses View Binding
-        // See: https://developer.android.com/topic/libraries/view-binding
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
-//        // When running in debug mode, connect to the Firebase Emulator Suite
-//        // "10.0.2.2" is a special value which allows the Android emulator to
-//        // connect to "localhost" on the host computer. The port values are
-//        // defined in the firebase.json file.
-//        if (BuildConfig.DEBUG) {
-//            Firebase.database.useEmulator("10.0.2.2", 9000)
-//            Firebase.auth.useEmulator("10.0.2.2", 9099)
-//            Firebase.storage.useEmulator("10.0.2.2", 9199)
-//        }
 
         // Initialize Firebase Auth and check if the user is signed in
         auth = Firebase.auth
@@ -68,8 +56,6 @@ class MainActivity : AppCompatActivity() {
         db = Firebase.database
         val messagesRef = db.reference.child(MESSAGES_CHILD)
 
-        // The FirebaseRecyclerAdapter class and options come from the FirebaseUI library
-        // See: https://github.com/firebase/FirebaseUI-Android
         val options = FirebaseRecyclerOptions.Builder<FriendlyMessage>()
             .setQuery(messagesRef, FriendlyMessage::class.java)
             .build()
@@ -80,14 +66,12 @@ class MainActivity : AppCompatActivity() {
         binding.messageRecyclerView.layoutManager = manager
         binding.messageRecyclerView.adapter = adapter
 
-        // Scroll down when a new message arrives
-        // See MyScrollToBottomObserver for details
+        // Scroll down when a new message arrives (MyScrollToBottomObservor.kt)
         adapter.registerAdapterDataObserver(
             MyScrollToBottomObserver(binding.messageRecyclerView, adapter, manager)
         )
 
-        // Disable the send button when there's no text in the input field
-        // See MyButtonObserver for details
+        // Disable the send button when there's no text in the input field (MyButtonObservor.kt)
         binding.messageEditText.addTextChangedListener(MyButtonObserver(binding.sendButton))
 
         // When the send button is clicked, send a text message
