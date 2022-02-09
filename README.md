@@ -1,3 +1,6 @@
 # My-Application
-A simple firebase based group chat application which can be shared with anyone to 
-have safe and secure group chat experience.
+A simple realtime firebase based group chat application which can be shared with anyone to 
+have a safe and secure group chat experience.
+
+This app uses Firebase Authentication to allow users to sign in, Firebase Realtime Database
+to sync data, and Cloud Storage for Firebase to store binary files(text and images).
