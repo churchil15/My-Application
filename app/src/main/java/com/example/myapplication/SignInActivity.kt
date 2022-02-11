@@ -39,11 +39,7 @@ class SignInActivity : AppCompatActivity() {
     public override fun onStart() {
         super.onStart()
 
-        // If there is no signed in user, launch FirebaseUI
-        // Otherwise head to MainActivity
         if (Firebase.auth.currentUser == null) {
-            // Sign in with FirebaseUI, see docs for more details:
-            // https://firebase.google.com/docs/auth/android/firebaseui
             val signInIntent = AuthUI.getInstance()
                 .createSignInIntentBuilder()
                 .setLogo(R.mipmap.ic_launcher)
