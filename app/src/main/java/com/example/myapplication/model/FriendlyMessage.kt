@@ -6,7 +6,7 @@ class FriendlyMessage {
     var photoUrl: String? = null
     var imageUrl: String? = null
 
-    // Empty constructor needed for Firestore serialization
+    // Empty constructor 
     constructor()
 
     constructor(text: String?, name: String?, photoUrl: String?, imageUrl: String?) {
