@@ -71,7 +71,6 @@ class MainActivity : AppCompatActivity() {
             MyScrollToBottomObserver(binding.messageRecyclerView, adapter, manager)
         )
 
-        // Disable the send button when there's no text in the input field (MyButtonObservor.kt)
         binding.messageEditText.addTextChangedListener(MyButtonObserver(binding.sendButton))
 
         // When the send button is clicked, send a text message
@@ -86,7 +85,6 @@ class MainActivity : AppCompatActivity() {
             binding.messageEditText.setText("")
         }
 
-        // When the image button is clicked, launch the image picker
         binding.addMessageImageView.setOnClickListener {
             openDocument.launch(arrayOf("image/*"))
         }
@@ -162,8 +160,7 @@ class MainActivity : AppCompatActivity() {
         storageReference.putFile(uri)
             .addOnSuccessListener(
                 this
-            ) { taskSnapshot -> // After the image loads, get a public downloadUrl for the image
-                // and add it to the message.
+            ) { taskSnapshot -> 
                 taskSnapshot.metadata!!.reference!!.downloadUrl
                     .addOnSuccessListener { uri ->
                         val friendlyMessage =
