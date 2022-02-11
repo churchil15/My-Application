@@ -17,8 +17,6 @@ import com.example.myapplication.model.FriendlyMessage
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.ktx.storage
 
-// The FirebaseRecyclerAdapter class and options come from the FirebaseUI library
-// (referenced from this official github repo: https://github.com/firebase/FirebaseUI-Android)
 class FriendlyMessageAdapter(
     private val options: FirebaseRecyclerOptions<FriendlyMessage>,
     private val currentUserName: String?
